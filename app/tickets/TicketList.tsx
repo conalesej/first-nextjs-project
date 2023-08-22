@@ -1,5 +1,6 @@
 import React from "react";
 import { ITickets } from "../utils/types";
+import Link from "next/link";
 
 {
   /** 
@@ -18,7 +19,7 @@ const getTickets = async () => {
   return res.json();
 };
 
-const TicketList = async () => {
+const TicketList: React.FC = async () => {
   const tickets: ITickets[] = await getTickets();
 
   return (
@@ -26,11 +27,13 @@ const TicketList = async () => {
       {tickets.map((ticket) => {
         return (
           <div key={ticket.id} className="card my-5">
-            <h3>{ticket.title}</h3>
-            <p>{ticket.body.slice(0, 200)}...</p>
-            <div className={`pill ${ticket.priority}`}>
-              {ticket.priority} priority
-            </div>
+            <Link href={`/tickets/${ticket.id}`}>
+              <h3>{ticket.title}</h3>
+              <p>{ticket.body.slice(0, 200)}...</p>
+              <div className={`pill ${ticket.priority}`}>
+                {ticket.priority} priority
+              </div>
+            </Link>
           </div>
         );
       })}
