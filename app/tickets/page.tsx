@@ -1,11 +1,20 @@
 import React from "react";
+import TicketList from "./TicketList";
 
-const News = () => {
+const Tickets = () => {
   return (
     <main>
-      <span className="text-orange-500 text-5xl">Tickets</span>
+      <nav>
+        <div>
+          <h2>Tickets</h2>
+          <p>
+            <small>Currently open tickets.</small>
+          </p>
+        </div>
+      </nav>
+      <TicketList />
     </main>
   );
 };
 
-export default News;
+export default Tickets;
