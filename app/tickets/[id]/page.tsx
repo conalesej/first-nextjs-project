@@ -2,7 +2,7 @@ import { ITickets } from "@/app/utils/types";
 import { notFound } from "next/navigation";
 import React from "react";
 
-export const dynamicParams = false; // if(false) Returns a 404 page if an id hasn't been pre-rendered before OTHERWISE Next js will refetch this shit
+export const dynamicParams = true; // if(false) Returns a 404 page if an id hasn't been pre-rendered before OTHERWISE Next js will refetch this shit
 
 export const generateStaticParams = async () => {
   {
