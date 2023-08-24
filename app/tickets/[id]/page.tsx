@@ -26,7 +26,7 @@ interface ITicketDetails {
 
 const getTicket = async (id: number) => {
   // Imitate delay by 3000s
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 1500));
   const res = await fetch("http://localhost:4000/tickets/" + id, {
     next: {
       revalidate: 30, //  use 0 to opt out of using cache
