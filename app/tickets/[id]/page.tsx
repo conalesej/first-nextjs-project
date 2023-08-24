@@ -1,6 +1,6 @@
 import { ITickets } from "@/app/utils/types";
 import { notFound } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 
 export const dynamicParams = true; // if(false) Returns a 404 page if an id hasn't been pre-rendered before OTHERWISE Next js will refetch this shit
 
@@ -25,6 +25,8 @@ interface ITicketDetails {
 }
 
 const getTicket = async (id: number) => {
+  // Imitate delay by 3000s
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   const res = await fetch("http://localhost:4000/tickets/" + id, {
     next: {
       revalidate: 30, //  use 0 to opt out of using cache
