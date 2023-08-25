@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Card } from "./components";
+import { Card } from "../components";
 
 const App = () => {
   return (

@@ -1,10 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Rubik } from "next/font/google";
-
+import { Rubik } from "next/font/google";
 
 // Components
-import { Navbar } from "./components/";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -21,7 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={rubik.className}>
-        <Navbar />
+        {/* We have this one before but it is now nested in the dashboard and auth*/}
+        {/* <Navbar /> */}
         {children}
       </body>
     </html>
