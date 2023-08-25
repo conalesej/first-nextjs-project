@@ -20,6 +20,27 @@
       "body": "Lorem ipsum Triforce sit amet, Linkus Hyruleus tempus Ganondorf. Nunc ocarina sagittis quis Majoras Mask. Nulla in metus arcu. Suspendisse potenti. In vel mauris varius, consectetur Zora ipsum eget, Master Sword porttitor urna. Fusce elementum urna elit, eget eleifend velit consectetur eget. Integer vel lobortis ipsum, vitae auctor Ocarina of Time. Donec sed urna dapibus, interdum magna a, eleifend magna. Curabitur tincidunt enim a neque volutpat. Phasellus auctor magna vel nunc pretium, ut volutpat justo tristique. Pellentesque cursus convallis mauris, in tempus enim tincidunt vitae.",
       "priority": "high",
       "user_email": "peach@netninja.dev"
+    },
+    {
+      "title": "Laptop Repair Issue",
+      "body": "Hey there, I noticed that your laptop is having some issues lately, and I think it might be a good idea to have it looked at by a professional. It seems like there might be some underlying problems causing the issues you're facing. Getting it fixed sooner rather than later could prevent further complications. Let me know if you need any help finding a reliable repair service",
+      "priority": "low",
+      "user_email": "ej@netninja.dev",
+      "id": "GrWeqPg"
+    },
+    {
+      "title": "Hello World",
+      "body": "ZZZz",
+      "priority": "low",
+      "user_email": "ej@netninja.dev",
+      "id": "YBbO7qF"
+    },
+    {
+      "title": "Clean up the mess in Mario's Desk",
+      "body": "blah blah blah",
+      "priority": "high",
+      "user_email": "ej@netninja.dev",
+      "id": "JZ1QG1_"
     }
   ]
 }
