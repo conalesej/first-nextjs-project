@@ -4,6 +4,21 @@ import React, { Suspense } from "react";
 
 export const dynamicParams = true; // if(false) Returns a 404 page if an id hasn't been pre-rendered before OTHERWISE Next js will refetch this shit
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { id: number };
+}) => {
+  const { id } = params;
+  console.log({ params });
+  const res = await fetch(`http://localhost:4000/tickets/${id}`);
+  const ticket: ITickets = await res.json();
+
+  return {
+    title: `Dojo Helpdesk | ${ticket.title}`,
+  };
+};
+
 export const generateStaticParams = async () => {
   {
     /** 

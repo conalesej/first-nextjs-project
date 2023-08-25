@@ -2,6 +2,13 @@ import React, { Suspense } from "react";
 import TicketList from "./TicketList";
 import Loading from "../loading";
 import Link from "next/link";
+import { Metadata } from "next";
+
+
+
+export const metadata: Metadata = {
+  title: "Dojo Helpdesk | Tickets",
+};
 
 const Tickets = () => {
   return (
