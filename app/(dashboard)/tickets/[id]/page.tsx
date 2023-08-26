@@ -1,4 +1,4 @@
-import { ITickets } from "@/app/utils/types";
+import { ITicket } from "@/app/utils/types";
 import { notFound } from "next/navigation";
 import React, { Suspense } from "react";
 
@@ -12,7 +12,7 @@ export const generateMetadata = async ({
   const { id } = params;
   console.log({ params });
   const res = await fetch(`http://localhost:4000/tickets/${id}`);
-  const ticket: ITickets = await res.json();
+  const ticket: ITicket = await res.json();
 
   return {
     title: `Dojo Helpdesk | ${ticket.title}`,
@@ -27,7 +27,7 @@ export const generateStaticParams = async () => {
   }
 
   const res = await fetch("http://localhost:4000/tickets/");
-  const tickets: ITickets[] = await res.json();
+  const tickets: ITicket[] = await res.json();
 
   const ticketsId = tickets.map((ticket) => ({ id: ticket.id }));
 
@@ -55,7 +55,7 @@ const getTicket = async (id: number) => {
 };
 const TicketDetails: React.FC<ITicketDetails> = async ({ params }) => {
   const { id } = params;
-  const ticket: ITickets = await getTicket(id);
+  const ticket: ITicket = await getTicket(id);
 
   return (
     <main>

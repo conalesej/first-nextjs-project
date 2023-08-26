@@ -1,5 +1,5 @@
 export type IPriority = "high" | "medium" | "low";
-export interface ITickets {
+export interface ITicket {
   id: number;
   title: string;
   body: string;

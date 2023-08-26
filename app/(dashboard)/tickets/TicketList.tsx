@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ITickets } from "@/app/utils/types";
+import { ITicket } from "@/app/utils/types";
 
 {
   /** 
@@ -23,7 +23,7 @@ const getTickets = async () => {
 };
 
 const TicketList: React.FC = async () => {
-  const tickets: ITickets[] = await getTickets();
+  const tickets: ITicket[] = await getTickets();
   return (
     <>
       {tickets.map((ticket) => {
