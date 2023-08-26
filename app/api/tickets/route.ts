@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic"; // Any router handler that is declared i
 export const GET = async () => {
   try {
     const res = await fetch("http://localhost:4000/tickets", {
-      next: { revalidate: 0 }, // So it would not be cached
+    //   next: { revalidate: 0 }, // So it would not be cached
     });
     const tickets = await res.json();
     return NextResponse.json(tickets, {
