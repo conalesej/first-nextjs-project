@@ -3,7 +3,10 @@ import Link from "next/link";
 import DojoLogo from "../../public/images/dojo-logo.png";
 import React from "react";
 
-const Navbar: React.FC = () => {
+interface INavbar {
+  user: any;
+}
+const Navbar: React.FC<INavbar> = ({ user }) => {
   return (
     <nav>
       <Image
@@ -16,6 +19,7 @@ const Navbar: React.FC = () => {
       <h1 className="text-4xl">Ticketing Help Desk</h1>
       <Link href="/">Dashboard</Link>
       <Link href="/tickets">Tickets</Link>
+      {user && <span>Hello, {user.email}</span>}
     </nav>
   );
 };
