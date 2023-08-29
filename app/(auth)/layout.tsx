@@ -8,14 +8,15 @@ import { redirect } from "next/navigation";
 interface IAuthLayout {
   children: ReactNode;
 }
-const AuthLayout: React.FC<IAuthLayout> = async({ children }) => {
+const AuthLayout: React.FC<IAuthLayout> = async ({ children }) => {
   const supabase = createServerComponentClient({ cookies });
 
   const { data } = await supabase.auth.getSession();
 
-  if(data.session){
-    redirect('/')        // Router is used in the Client/Browser whereas Redirict is used in the Server components
+  if (data.session) {
+    redirect("/"); // Router is used in the Client/Browser whereas Redirict is used in the Server components
   }
+
   return (
     <>
       <nav>
