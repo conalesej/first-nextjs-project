@@ -4,5 +4,5 @@ export interface ITicket {
   title: string;
   body: string;
   priority: IPriority;
-  user_email: string;
+  user_email?: string;
 }
