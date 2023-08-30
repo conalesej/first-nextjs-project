@@ -1,4 +1,6 @@
 import { ITicket } from "@/app/utils/types";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import React, { Suspense } from "react";
 
@@ -10,29 +12,17 @@ export const generateMetadata = async ({
   params: { id: number };
 }) => {
   const { id } = params;
-  console.log({ params });
-  const res = await fetch(`http://localhost:4000/tickets/${id}`);
-  const ticket: ITicket = await res.json();
+  const supabase = createServerComponentClient({ cookies });
+
+  const { data: ticket } = await supabase
+    .from("tickets")
+    .select()
+    .eq("id", params.id)
+    .single(); // EQ = equal
 
   return {
-    title: `Dojo Helpdesk | ${ticket.title}`,
+    title: `Dojo Helpdesk | ${ticket?.title || "Ticket not found"}`,
   };
-};
-
-export const generateStaticParams = async () => {
-  {
-    /** 
-    If the revalidate is set to 0 -> Then this will be useless because this is set to the cache
-  */
-  }
-
-  const res = await fetch("http://localhost:4000/tickets/");
-  const tickets: ITicket[] = await res.json();
-
-  const ticketsId = tickets.map((ticket) => ({ id: ticket.id }));
-
-  // [{id: 1}, {id: 2}, {id: 3}, ...]
-  return ticketsId;
 };
 
 interface ITicketDetails {
@@ -41,17 +31,19 @@ interface ITicketDetails {
 
 const getTicket = async (id: number) => {
   // Imitate delay by 3000s
-  await new Promise((resolve) => setTimeout(resolve, 1500));
-  const res = await fetch("http://localhost:4000/tickets/" + id, {
-    next: {
-      revalidate: 30, //  use 0 to opt out of using cache
-    },
-  });
+  // await new Promise((resolve) => setTimeout(resolve, 1500));
+  const supabase = createServerComponentClient({ cookies });
 
-  if (!res.ok) {
+  const { data } = await supabase
+    .from("tickets")
+    .select()
+    .eq("id", id)
+    .single(); // EQ = equal
+
+  if (!data) {
     notFound();
   }
-  return res.json();
+  return data;
 };
 const TicketDetails: React.FC<ITicketDetails> = async ({ params }) => {
   const { id } = params;
@@ -75,3 +67,19 @@ const TicketDetails: React.FC<ITicketDetails> = async ({ params }) => {
 };
 
 export default TicketDetails;
+
+// export const generateStaticParams = async () => {
+//   {
+//     /**
+//     If the revalidate is set to 0 -> Then this will be useless because this is set to the cache
+//   */
+//   }
+
+//   const res = await fetch("http://localhost:4000/tickets/");
+//   const tickets: ITicket[] = await res.json();
+
+//   const ticketsId = tickets.map((ticket) => ({ id: ticket.id }));
+
+//   // [{id: 1}, {id: 2}, {id: 3}, ...]
+//   return ticketsId;
+// };
