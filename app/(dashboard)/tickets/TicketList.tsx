@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { ITicket } from "@/app/utils/types";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
 {
   /** 
@@ -12,14 +14,14 @@ import { ITicket } from "@/app/utils/types";
 
 const getTickets = async () => {
   // Imitate delay by 3000s
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  const res = await fetch("http://localhost:4000/tickets", {
-    next: {
-      revalidate: 0, //  use 0 to opt out of using cache
-    },
-  });
-  return res.json();
+  const supabase = createServerComponentClient({ cookies });
+
+  const { data, error } = await supabase.from("tickets").select();
+
+  if (error) console.log(error.message);
+  return data as ITicket[];
 };
 
 const TicketList: React.FC = async () => {
