@@ -3,6 +3,7 @@
 import { IPriority } from "@/app/utils/types";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { addTicket } from "../action";
 
 const CreateForm = () => {
   const router = useRouter();
@@ -33,7 +34,8 @@ const CreateForm = () => {
   };
 
   return (
-    <form action="" className="w-1/2" onSubmit={handleSubmit}>
+    // <form action="" className="w-1/2" onSubmit={handleSubmit}>
+    <form action={addTicket} className="w-1/2">
       <label>
         <span>Title:</span>
         <input
