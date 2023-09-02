@@ -3,11 +3,12 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { addTicket } from "../action";
+import SubmitButton from "@/app/components/SubmitButton";
 
 const CreateForm = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
     // <form action="" className="w-1/2" onSubmit={handleSubmit}>
@@ -28,10 +29,11 @@ const CreateForm = () => {
           <option value="high">High Priority</option>
         </select>
       </label>
-      <button className="btn-primary" disabled={isLoading}>
+      <SubmitButton />
+      {/* <button className="btn-primary" disabled={isLoading}>
         {isLoading && <span>Adding...</span>}
         {!isLoading && <span>Add Ticket</span>}
-      </button>
+      </button> */}
     </form>
   );
 };
