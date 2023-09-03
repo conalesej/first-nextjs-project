@@ -1,15 +1,8 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import { addTicket } from "../action";
 import SubmitButton from "@/app/components/SubmitButton";
 
 const CreateForm = () => {
-  // const router = useRouter();
-
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
-
   return (
     // <form action="" className="w-1/2" onSubmit={handleSubmit}>
     <form action={addTicket} className="w-1/2">
