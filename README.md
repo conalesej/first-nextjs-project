@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 ### NetNinja TICKET CRUD
-[Next.js course]([https://nextjs.org/](https://netninja.dev/p/next-13-masterclass))
+[Next.js course](https://netninja.dev/p/next-13-masterclass)
 ## Getting Started
 
 First, run the development server:
